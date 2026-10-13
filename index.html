@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:,">
+<meta name="robots" content="noindex, nofollow">
+<title>Mariëtte's Art Gallery</title>
+<meta name="description" content="Hand-built plaster reliefs by Mariëtte. Walk through the gallery, hold the light to each work, and see it on your own wall.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-view="gallery">
+
+<header class="head">
+  <a class="mark" href="#/">Mariëtte<small>Art Gallery</small></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#/" data-route="gallery">Gallery</a>
+    <a href="#/works" data-route="works">Works</a>
+    <a href="#/room" data-route="room">In your room</a>
+    <a href="#/studio" data-route="studio">Studio</a>
+  </nav>
+  <button class="bag" type="button" aria-label="Your collection">Collection <span class="bag-n">0</span></button>
+  <button class="menu" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<main>
+  <!-- the walk-around gallery -->
+  <section class="view" id="v-gallery" aria-label="Gallery">
+    <div class="g-stage"></div>
+    <div class="g-hint" hidden>
+      <span class="desk">Move your mouse over the work to light it</span>
+      <span class="touch">Drag your finger over the work to light it</span>
+    </div>
+    <button class="g-arrow prev" type="button" aria-label="Previous work"></button>
+    <button class="g-arrow next" type="button" aria-label="Next work"></button>
+    <div class="g-card" hidden>
+      <p class="eyebrow g-eyebrow"></p>
+      <h2 class="g-title"></h2>
+      <p class="g-meta"></p>
+      <div class="g-actions">
+        <a class="btn g-view" href="#/works">View work</a>
+        <a class="btn ghost g-room" href="#/room">In your room</a>
+      </div>
+      <div class="g-nav">
+        <button class="g-step prev" type="button" aria-label="Previous"><i></i></button>
+        <span class="g-dots"></span>
+        <button class="g-step next" type="button" aria-label="Next"><i></i><b>Begin the walk</b></button>
+      </div>
+    </div>
+    <div class="veil"><span>Preparing the gallery</span></div>
+  </section>
+
+  <!-- catalogue -->
+  <section class="view page" id="v-works" aria-label="Works">
+    <div class="intro">
+      <p class="eyebrow">Works</p>
+      <h1>Plaster reliefs, built up by hand</h1>
+      <p class="lede">These works are almost entirely white, so their form only shows in raking light. Open any of them and move the light across it yourself.</p>
+    </div>
+    <div class="grid"></div>
+  </section>
+
+  <!-- one work -->
+  <section class="view page" id="v-work" aria-label="Work">
+    <div class="w-wrap">
+      <div class="w-viewer">
+        <div class="w-stage"></div>
+        <div class="w-hint">Move to hold the light</div>
+        <div class="w-controls">
+          <div class="chips" role="group" aria-label="Light">
+            <button data-mode="hand" aria-pressed="true">Hand light</button>
+            <button data-mode="gallery" aria-pressed="false">Gallery</button>
+            <button data-mode="glow" aria-pressed="false">Backlit</button>
+          </div>
+          <label class="rake">Rake<input type="range" min="0" max="1" step="0.001" value="0.55" aria-label="Light angle"></label>
+        </div>
+      </div>
+      <article class="w-info">
+        <p class="eyebrow w-no"></p>
+        <h1 class="w-title"></h1>
+        <p class="w-medium"></p>
+        <p class="w-price"></p>
+        <div class="w-actions">
+          <button class="btn w-add" type="button">Add to collection</button>
+          <a class="btn ghost w-room" href="#/room">See it in your room</a>
+          <button class="link w-walk" type="button">Walk to it in the gallery →</button>
+        </div>
+        <p class="w-note"></p>
+        <dl class="w-facts"></dl>
+        <figure class="w-insitu"><img alt=""><figcaption>In situ</figcaption></figure>
+        <nav class="w-next" aria-label="More works"></nav>
+      </article>
+    </div>
+  </section>
+
+  <!-- in your room -->
+  <section class="view room" id="v-room" aria-label="In your room">
+    <div class="room-stage">
+      <div class="room-frame">
+        <img class="room-photo" alt="Your wall">
+        <svg class="room-measure" aria-hidden="true"></svg>
+        <button class="room-sun" type="button" aria-label="Light position, drag to move"></button>
+      </div>
+      <p class="room-tip">Drag the work to place it · drag the light to where your window or lamp is</p>
+    </div>
+    <aside class="room-panel">
+      <p class="eyebrow">In your room</p>
+      <h1>See it on your own wall</h1>
+      <ol class="steps">
+        <li>
+          <h3>Your wall</h3>
+          <p>Take a photo straight-on to the wall, in the light you usually have.</p>
+          <div class="row">
+            <label class="btn room-upload">Upload a photo<input type="file" accept="image/*" hidden></label>
+            <button class="btn ghost room-sample" type="button">Sample room</button>
+          </div>
+        </li>
+        <li>
+          <h3>Choose a work <span class="room-size"></span></h3>
+          <div class="room-works"></div>
+        </li>
+        <li>
+          <h3>True scale</h3>
+          <p>Draw a line along something you know the size of, like a sofa or a door.</p>
+          <div class="row">
+            <button class="btn ghost room-measure-btn" type="button">Measure</button>
+            <span class="room-measure-input"><input class="room-cm" type="number" min="1" inputmode="decimal" placeholder="200" aria-label="Length in centimetres"> cm
+              <button class="btn room-apply" type="button">Apply</button></span>
+          </div>
+        </li>
+        <li>
+          <h3>Light</h3>
+          <label class="rake">Angle<input class="room-rake" type="range" min="0" max="1" step="0.001" value="0.45" aria-label="Light angle"></label>
+          <label class="toggle room-glow" hidden><input type="checkbox"> LED backlight</label>
+        </li>
+      </ol>
+      <div class="row end">
+        <button class="btn ghost room-save" type="button">Save image</button>
+        <button class="btn room-add" type="button">Add to collection</button>
+      </div>
+    </aside>
+    <div class="room-saved" hidden>
+      <figure><img alt="Your wall with the work on it"><figcaption>Right-click or long-press the picture to save it.</figcaption></figure>
+      <button class="btn" type="button">Done</button>
+    </div>
+  </section>
+
+  <!-- about -->
+  <section class="view page" id="v-studio" aria-label="Studio">
+    <div class="studio">
+      <figure><img src="art/tree/insitu.jpg" alt="Tree & Pavilion, backlit, above an oak sideboard"></figure>
+      <div>
+        <p class="eyebrow">Studio</p>
+        <h1>Paintings you can touch with light</h1>
+        <p>Mariëtte builds her paintings up rather than painting them flat. She spreads, combs and carves plaster and texture paste by hand until the surface becomes a landscape of ridges and hollows.</p>
+        <p>Because the works are almost entirely white, light does the colouring. A morning window, an evening lamp or an LED behind the panel each draw the same piece differently.</p>
+        <p>Every work is one of a kind. Commissions in your own size and palette are welcome.</p>
+        <div class="row"><a class="btn" href="#/works">See the works</a><button class="btn ghost studio-ask" type="button">Ask about a commission</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- collection drawer -->
+<div class="scrim" hidden></div>
+<aside class="drawer" aria-label="Your collection" aria-hidden="true">
+  <div class="drawer-head"><h2>Your collection</h2><button class="link drawer-close" type="button">Close</button></div>
+  <ul class="bag-list"></ul>
+  <p class="bag-empty">Nothing here yet. Add a work from the gallery.</p>
+  <div class="bag-foot">
+    <div class="bag-total"><span>Total</span><span class="bag-sum"></span></div>
+    <p class="small">Each piece is one of a kind. Send a request and Mariëtte will confirm availability, delivery and payment with you.</p>
+    <form class="enquire">
+      <input name="name" placeholder="Your name" required autocomplete="name">
+      <input name="email" type="email" placeholder="Email" required autocomplete="email">
+      <textarea name="msg" rows="3" placeholder="Anything she should know (optional)"></textarea>
+      <button class="btn" type="submit">Request these works</button>
+    </form>
+  </div>
+</aside>
+
+<div class="compose" role="dialog" aria-label="Your message" hidden>
+  <h2>Send this to Mariëtte</h2>
+  <p class="small">Copy the message and email it to her.</p>
+  <div class="compose-row"><span class="compose-to"></span><button class="link" type="button" data-copy="to">Copy address</button></div>
+  <textarea class="compose-text" id="compose-text" rows="9" aria-label="Message"></textarea>
+  <div class="row"><button class="btn" type="button" data-copy="text">Copy message</button><a class="btn ghost compose-mail" href="#">Open email app</a><button class="link compose-close" type="button">Close</button></div>
+</div>
+
+<div class="sheet" hidden>
+  <a href="#/" data-route="gallery">Gallery</a>
+  <a href="#/works" data-route="works">Works</a>
+  <a href="#/room" data-route="room">In your room</a>
+  <a href="#/studio" data-route="studio">Studio</a>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
